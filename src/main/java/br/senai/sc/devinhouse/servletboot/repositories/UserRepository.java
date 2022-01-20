@@ -1,7 +1,6 @@
 package br.senai.sc.devinhouse.servletboot.repositories;
 
 import br.senai.sc.devinhouse.servletboot.models.User;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

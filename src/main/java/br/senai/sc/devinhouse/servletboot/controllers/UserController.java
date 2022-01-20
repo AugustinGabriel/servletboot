@@ -4,7 +4,6 @@ import br.senai.sc.devinhouse.servletboot.models.User;
 import br.senai.sc.devinhouse.servletboot.repositories.UserRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

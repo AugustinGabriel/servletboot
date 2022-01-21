@@ -1,7 +1,7 @@
 package br.senai.sc.devinhouse.servletboot.controllers;
 
 import br.senai.sc.devinhouse.servletboot.models.User;
-import br.senai.sc.devinhouse.servletboot.repositories.UserRepository;
+import br.senai.sc.devinhouse.servletboot.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,10 +10,10 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserRepository userRepository;
+    private UserService userService;
 
-    UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
@@ -21,7 +21,7 @@ public class UserController {
         System.out.println("GET :");
         List<User> users;
         try {
-            users = userRepository.getAllUsers();
+            users = userService.getAllUsers();
         } catch (Exception e) {
             return null;
         }
@@ -33,7 +33,7 @@ public class UserController {
         System.out.println("GET :" + id);
         User user;
         try {
-            user = userRepository.getUserById(id);
+            user = userService.getUserById(id);
         } catch (Exception e) {
             return null;
         }
@@ -43,14 +43,14 @@ public class UserController {
     @PostMapping
     public User post(@RequestBody User user) {
         System.out.println("POST :" + user);
-        user = userRepository.create(user);
+        user = userService.create(user);
         return user;
     }
 
     @PutMapping("/{id}")
     public User put(@PathVariable("id") Integer id, @RequestBody User user) throws Exception {
         System.out.println("PUT: " + user);
-        user = userRepository.update(id, user);
+        user = userService.update(id, user);
         return user;
     }
 
@@ -58,7 +58,7 @@ public class UserController {
     public Boolean delete(@PathVariable("id") Integer id) {
         System.out.println("DELETE: " + id);
         try {
-            userRepository.remove(id);
+            userService.remove(id);
         } catch (Exception e) {
             return false;
         }

@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Company {
 
-    private int id;
+	private Integer id;
     private String name;
-    private int age;
-    private Company company;
+    private String cnpj;
 
 }
